@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        var test = function(){
+            alert("start");
+            $.ajax({
+                url:"reg.do",
+                type:"POST",
+                data:"name=123",
+                dataType:"json",
+                success:function(json){
+                    alert("return"+json.data);
+                    location.href = "success.html";
+                },
+                error:function(e,xhr,opt){
+                    alert("Error requesting " + opt.url + ": " + xhr.status + " " + xhr.statusText);
+                }
+            })
+        }
+
+    </script>
+</head>
+<body>
+    index
+    <form >
+        <input name = "name" type="text" />
+        <input name = "password" type="password"/>
+        <input type="button" onclick="test()"   />
+    </form>
+
+</body>
+</html>
